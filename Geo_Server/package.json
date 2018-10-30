@@ -1,0 +1,17 @@
+{
+  "name": "geo_server",
+  "version": "1.0.0",
+  "description": "Server for Geo_Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node index.js"
+  },
+  "author": "Tharaka Romesh",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.4"
+  }
+}
