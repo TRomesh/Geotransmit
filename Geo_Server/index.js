@@ -54,17 +54,7 @@ app.get("/getgeo", (req, res) => {
 io.on("connection", function(socket) {
   socket.on("temp", function(data) {
     console.log(data);
-
-    console.log({
-      package: data.package,
-      longitude: data.longitude,
-      lattitude: data.lattitude
-    });
-    const Geo = new geo({
-      package: data.package,
-      longitude: data.longitude,
-      lattitude: data.lattitude
-    });
+    const Geo = new geo(data);
     Geo.save(function(err) {
       if (err) {
         socket.emit("light", { status: "ON" });
