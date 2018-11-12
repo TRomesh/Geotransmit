@@ -51,11 +51,20 @@ app.get("/getgeo", (req, res) => {
   });
 });
 
+app.post("/delallgeo", (req, res) => {
+  geo.deleteMany({}, function(err, data) {
+    res.json(data);
+  });
+});
+
 io.on("connection", function(socket) {
   socket.on("temp", function(data) {
-    console.log(data);
-    const Geo = new geo(data);
-    Geo.save(function(err) {
+    const sockGeo = new geo({
+      package: data.package,
+      longitude: data.longitude,
+      lattitude: data.lattitude
+    });
+    sockGeo.save(function(err) {
       if (err) {
         socket.emit("light", { status: "ON" });
       } else {
