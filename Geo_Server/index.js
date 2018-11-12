@@ -53,6 +53,8 @@ app.get("/getgeo", (req, res) => {
 
 io.on("connection", function(socket) {
   socket.on("temp", function(data) {
+    console.log(data);
+
     console.log({
       package: data.package,
       longitude: data.longitude,
